@@ -1,8 +1,7 @@
 %Proyecto Teoría Electromagnética 1
 %Rubén Lima 16794
 %Sergio Argueta 16079
-
-%% inciso 1.1
+%% RECTANGULARES Problema 1 inciso 1
 clear all, close all, clc
 
 a = 1;%seleccionamos el valor de a
@@ -101,7 +100,7 @@ xlabel('x')%etiqueta del eje x
 ylabel('y')%etiqueta del eje y
 zlabel('E1(x,y)')%etiqueta del eje z
 title('Campo Electrico para n=20')%título de la gráfica 
-%% inciso 1.2
+%% RECTANGULARES Problema 1 inciso 2
 a = 1;%seleccionamos el valor de a
 b = 1;%seleccionamos el valor de b
 n = 2;%seleccionamos un valor para n
@@ -201,7 +200,7 @@ xlabel('x')%etiqueta del eje x
 ylabel('y')%etiqueta del eje y
 zlabel('E2(x,y)')%etiqueta del eje z
 title('Campo Electrico para n=20')%título de la gráfica 
-%% Problema 2 inciso 2.1
+%% RECTANGULARES Problema 2 inciso 1
 a = 1;%seleccionamos el valor de a
 b = 1;%seleccionamos el valor de b
 n = 2;%seleccionamos un valor para n
@@ -302,7 +301,7 @@ ylabel('y')%etiqueta del eje y
 zlabel('E3(x,y)')%etiqueta del eje z
 title('Campo Electrico para n=20')%título de la gráfica
 
-%% inciso 2.2
+%% RECTANGULARES Problema 2 inciso 2
 
 a = 1;%seleccionamos el valor de a
 b = 1;%seleccionamos el valor de b
@@ -404,7 +403,7 @@ ylabel('y')%etiqueta del eje y
 zlabel('E4(x,y)')%etiqueta del eje z
 title('Campo Electrico para n=20')%título de la gráfica
 
-%% Problema 3
+%% RECTANGULARES Problema 3
 a = 1;%seleccionamos el valor de a
 b = 1;%seleccionamos el valor de b
 n = 2;%seleccionamos un valor para n
@@ -504,6 +503,45 @@ xlabel('x')%etiqueta del eje x
 ylabel('y')%etiqueta del eje y
 zlabel('E4(x,y)')%etiqueta del eje z
 title('Campo Electrico para n=20')%título de la gráfi
+
+
+
+
+
+%% ESFERICAS Problema 1
+e0=8.854*10^-12;
+syms phi rho theta 
+x = sin(phi).*cos(theta);
+y = sin(phi).*sin(theta);
+z = cos(phi);
+R = 1;
+for r = 0:0.05:1
+    r0 = -(((3/(2*e0))*r)+(3.*R.^3)./(2*e0*r.^2)).*cos(phi) -(r.^3)./(3*e0.*R.^2)+(r.^5)./(3e0.*r^.3);
+    
+
+end
+figure(11);
+fsurf(x,y,r0);
+title('Potencial de le esfera')%título de la gráfi
+%% ESFERICAS Problema 2
+
+e0=8.854*10^-12;
+syms phi rho theta 
+x = sin(phi).*cos(theta);
+y = sin(phi).*sin(theta);
+z = cos(phi);
+R = 1;
+a = 1;
+b = 1;
+k = 1; 
+p = 1;
+for r = 0:0.05:1
+    r0 = (a.*p)./r -((k*b^2)./r.^2+(k/b).*r).*cos(phi)+((2*k*b^3)./r.^3 + (2*k/b^2).*r.^2)*(3*(cos(phi)).^2-1)/2;
+end
+figure(12);
+fsurf(x,y,r0);
+title('Potencial de le esfera')%título de la gráfi  
+
 %% Funciones para encontrar laecuacion de la place 
 %Coordenadas Rectangualres
 %Ejercicio 1 
@@ -564,6 +602,8 @@ function z3 = laplace_potencial_para_problema3(x,y,N,a,b)%creamos una función co
         %anteriores. También que 
     end
 end
+%Coordenadas Esféricas 
+%Ejercicio 1
 
 
 
