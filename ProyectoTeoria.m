@@ -1,3 +1,7 @@
+%Proyecto Teoría Electromagnética 1
+%Rubén Lima 16794
+%Sergio Argueta 16079
+
 %% inciso 1.1
 clear all, close all, clc
 
@@ -539,7 +543,7 @@ end
 function z22 = laplace_potencial_para_problema2_2(x,y,N,a,b)%creamos una función con esos parametros
     z22 = 0;%hacemos que z sea cero
     for n=1:N%ciclo para que repita hasta llegar N 
-        f = @(y) atan(y./a).*sin((n)*pi*y./b);%creamos la función que queremos integrar
+        f = @(y) (2*y.^3 + 5).*sin((n)*pi*y./b);%Creamos la función que queremos integrar
         fn = integral(f,0,b);%función de integración 
         z22 = z22 + (2/b*exp(n*pi*a/b))*fn*(exp(x*((n)*pi/b)).*sin(y*((n)*pi/b)));%potencial con sus coeficientes
         %hay qye notar que se le suma Z para poder contar los valores
