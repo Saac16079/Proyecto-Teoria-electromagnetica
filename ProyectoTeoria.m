@@ -403,13 +403,103 @@ title('Campo Electrico para n=20')%título de la gráfica
 %% Problema 3
 a = 1;%seleccionamos el valor de a
 b = 1;%seleccionamos el valor de b
-c = 1;
 n = 2;%seleccionamos un valor para n
-[x,y,w] = meshgrid(0:0.05:a, 0:0.05:b, 0:0.05:c);%creamos un sistema de coordenadas
-z3 = laplace_potencial_para_problema3(x,y,w,n,a,b)
+[x,y] = meshgrid(0:0.005:a, 0:0.005:b);%creamos un sistema de coordenadas
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);
+figure(9);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,1)%cuadro uno de dos columnas y dos filas
+mesh(x,y,z3);%función para gráficar 
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('V4(x,y)')%etiqueta del eje z
+title('Potencial n=2')%título de la gráfica 
 
+n = 5;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);
+figure(9);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,2)%cuadro uno de dos columnas y dos filas
+mesh(x,y,z3);%función para gráficar 
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('V4(x,y)')%etiqueta del eje z
+title('Potencial n=5')%título de la gráfica 
 
+n = 10;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);
+figure(9);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,3)%cuadro uno de dos columnas y dos filas
+mesh(x,y,z3);%función para gráficar 
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('V4(x,y)')%etiqueta del eje z
+title('Potencial n=10')%título de la gráfica 
 
+n = 20;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);
+figure(9);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,4)%cuadro uno de dos columnas y dos filas
+mesh(x,y,z3);%función para gráficar 
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('V4(x,y)')%etiqueta del eje z
+title('Potencial n=20')%título de la gráfica 
+
+%Campo electrico
+n = 2;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);%llamamos a la función de laplace
+[Ex,Ey] = gradient(-z3);%calculamos el gradiente 
+figure(10);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,1)%cuadro uno de dos columnas y dos filas
+contour(x,y,z3)%mapeada de la función sobre las lineas de gradiente
+hold on
+quiver(x,y,Ex,Ey)%mapeada del gradiente (que es el camo electrico)
+hold off
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('E4(x,y)')%etiqueta del eje z
+title('Campo Electrico para n=2')%título de la gráfi
+
+n = 5;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);%llamamos a la función de laplace
+[Ex,Ey] = gradient(-z3);%calculamos el gradiente 
+figure(10);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,2)%cuadro uno de dos columnas y dos filas
+contour(x,y,z3)%mapeada de la función sobre las lineas de gradiente
+hold on
+quiver(x,y,Ex,Ey)%mapeada del gradiente (que es el camo electrico)
+hold off
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('E4(x,y)')%etiqueta del eje z
+title('Campo Electrico para n=5')%título de la gráfi
+
+n = 10;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);%llamamos a la función de laplace
+[Ex,Ey] = gradient(-z3);%calculamos el gradiente 
+figure(10);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,3)%cuadro uno de dos columnas y dos filas
+contour(x,y,z3)%mapeada de la función sobre las lineas de gradiente
+hold on
+quiver(x,y,Ex,Ey)%mapeada del gradiente (que es el camo electrico)
+hold off
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('E4(x,y)')%etiqueta del eje z
+title('Campo Electrico para n=10')%título de la gráfi
+
+n = 20;%seleccionamos un valor para n
+z3 = laplace_potencial_para_problema3(x,y,n,a,b);%llamamos a la función de laplace
+[Ex,Ey] = gradient(-z3);%calculamos el gradiente 
+figure(10);%figura 1 (donde gráficaremos los resultados)
+subplot(2,2,4)%cuadro uno de dos columnas y dos filas
+contour(x,y,z3)%mapeada de la función sobre las lineas de gradiente
+hold on
+quiver(x,y,Ex,Ey)%mapeada del gradiente (que es el camo electrico)
+hold off
+xlabel('x')%etiqueta del eje x
+ylabel('y')%etiqueta del eje y
+zlabel('E4(x,y)')%etiqueta del eje z
+title('Campo Electrico para n=20')%título de la gráfi
 %% Funciones para encontrar laecuacion de la place 
 %Coordenadas Rectangualres
 %Ejercicio 1 
@@ -424,7 +514,6 @@ function z11 = laplace_potencial_para_inciso1(x,y,N,a,b)%creamos una función con
         %anteriores. También que 
     end
 end
-
 %inciso 2
 function z12 = laplace_potencial_para_inciso2(x,y,N,a,b)%creamos una funcion con esos parametros
     z12 = 0;%hacemos que z sea 0
@@ -434,7 +523,6 @@ function z12 = laplace_potencial_para_inciso2(x,y,N,a,b)%creamos una funcion con
         z12 = z12 + (2/((cosh((n)*pi*a/b))*b))*fn*(cosh(x*(n)*pi/b).*sin(y*(n)*pi/b));%potencial evaluada en N 
     end
 end
-
 %Problema 2
 %inciso 1 
 function z21 = laplace_potencial_para_problema2_1(x,y,N,a,b)%creamos una función con esos parametros
@@ -447,7 +535,7 @@ function z21 = laplace_potencial_para_problema2_1(x,y,N,a,b)%creamos una función
         %anteriores. También que 
     end
 end
-
+%inciso 2
 function z22 = laplace_potencial_para_problema2_2(x,y,N,a,b)%creamos una función con esos parametros
     z22 = 0;%hacemos que z sea cero
     for n=1:N%ciclo para que repita hasta llegar N 
@@ -458,20 +546,15 @@ function z22 = laplace_potencial_para_problema2_2(x,y,N,a,b)%creamos una función
         %anteriores. También que 
     end
 end
-
 %Problema 3
-function z3 = laplace_potencial_para_problema3(x,y,w,N,a,b)%creamos una función con esos parametros
+function z3 = laplace_potencial_para_problema3(x,y,N,a,b)%creamos una función con esos parametros
     z3 = 0;%hacemos que z sea cero
     m = 1;
     for n=1:N%ciclo para que repita hasta llegar N 
         for m = 1:N
         f=@(x,y) (x.*y.^2).*sin(n*pi*x/a).*sin(m*pi*y/b);%creamos la función que queremos integrar
         fn = integral2(f,0,b,0,a);%función de integración
-        
-        z3 = z3 + (4/(a*b))*fn*(sin(x*((n)*pi/a)).*sin(y*((m)*pi/b))).*exp(-pi*sqrt((n/a)^2+(m/b)^2)).*w;%potencial con sus coeficientes
-            
-            
-            
+        z3 = z3 + (4/(a*b))*fn*(sin(x*((n)*pi/a)).*sin(y*((m)*pi/b)));%potencial con sus coeficientes
         end 
         %hay qye notar que se le suma Z para poder contar los valores
         %anteriores. También que 
